@@ -11,20 +11,33 @@ export const createDonation = async(req, res) => {
 
     const preference = new Preference(client)
 
-    preference.create({
-        body: {
-          items: [
-            {
-              title: 'Donación',
-              quantity: 1,
-              unit_price: 1000
+    try {
+        const response = await preference.create({
+            body: {
+              items: [
+                {
+                  title: 'Donación',
+                  quantity: 1,
+                  currency_id: 'ARS',
+                  unit_price: 1000
+                }
+              ],
+              back_urls: {
+                success: 'http://localhost:5000/success',
+                pending: 'http://localhost:5000/pending',
+                failure: 'http://localhost:5000/failure'
+              },
+              notification_url: 'http://localhost:5000/webhook',
             }
-          ],
-        }
-      })
-      .then(console.log)
-      .catch(console.log);
+          })
+          console.log(response);
+          res.send(response.body);
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-    res.send('creating donation')
-
+export const receiveWebhook = (req, res) => {
+    console.log(req.query);
+    res.send('webhook received')
 }
