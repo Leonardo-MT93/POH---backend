@@ -5,7 +5,7 @@ export const createDonation = async(req, res) => {
     const client = new MercadoPagoConfig({
         accessToken: 'TEST-2269610763553663-012416-74611a1b8dfe808e1713d573b6bdb3ea-1651477105',
         options: {
-            timeout: 10000,
+            timeout: 1000,
         }
     })
 
@@ -27,13 +27,14 @@ export const createDonation = async(req, res) => {
                 pending: 'http://localhost:5000/pending',
                 failure: 'http://localhost:5000/failure'
               },
-              notification_url: 'http://localhost:5000/webhook',
+              notification_url: 'https://pawsofhope.4.us-1.fl0.io/webhook',
             }
           })
           console.log(response);
           res.send(response.body);
     } catch (error) {
         console.log(error)
+        throw error
     }
 }
 
