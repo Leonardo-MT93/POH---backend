@@ -3,7 +3,7 @@ import { createDonation, receiveWebhook } from '../controllers/donation.controll
 
 
 const router = Router();
-
+router.get('/', (req, res) => res.send('Server funcionando'));
 router.post('/create-donation', createDonation)
 
 router.get('/success', (req, res) => res.send('success'))
