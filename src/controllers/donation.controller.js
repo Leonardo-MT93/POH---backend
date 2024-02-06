@@ -6,13 +6,11 @@ export const createDonation = async (req, res) => {
       "TEST-7313224845884334-012219-5efbfd9b36d05a9ae6782bfc426e2421-52184901",
   });
 
-  
-
   try {
     const body = {
       items: [
         {
-          title: req.body.title,
+          title: 'Donación de ' + req.body.title,
           quantity: Number(req.body.quantity),
           unit_price: Number(req.body.price),
           currency_id: "ARS",
@@ -31,9 +29,8 @@ export const createDonation = async (req, res) => {
     
     res.json({
       id:result.id,
-      
+      url:result.sandbox_init_point
     })
-    // res.redirect(result.sandbox_init_point);
   } catch (error) {
     console.log('Error en el catch:', error);
     res.status(500).json({
