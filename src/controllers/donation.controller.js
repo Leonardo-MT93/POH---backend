@@ -10,16 +10,16 @@ export const createDonation = async (req, res) => {
     const body = {
       items: [
         {
-          title: 'Donación de ' + req.body.title,
+          title: req.body.title.toString(),
           quantity: Number(req.body.quantity),
           unit_price: Number(req.body.price),
           currency_id: "ARS",
         },
       ],
       back_urls: {
-        success: "http://localhost:5000/success",
+        success: "https://porellosezeiza.vercel.app/",
         pending: "http://localhost:5000/pending",
-        failure: "http://localhost:5000/failure",
+        failure: "https://porellosezeiza.vercel.app/donations",
       },
       notification_url: "https://pawsofhope.4.us-1.fl0.io/webhook",
       auto_return: "approved",
