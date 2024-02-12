@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors(
     {
-        origin: 'https://porellosezeiza.vercel.app/'
+        origin: 'https://porellosezeiza.vercel.app/donations'
     }
 ));
 app.use((req, res, next) => {
