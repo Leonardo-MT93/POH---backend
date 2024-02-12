@@ -16,6 +16,8 @@ export const createDonation = async (req, res) => {
           title: 'Donación a Por Ellos Ezeiza',
           quantity: Number(req.body.quantity),
           unit_price: Number(req.body.price),
+          description: 'Donación realizada para la organización Por Ellos Ezeiza',
+          picture_url: 'https://res.cloudinary.com/djsiviw7j/image/upload/v1707781040/zli3kiase0medarqi0my.jpg',
           currency_id: "ARS",
         },
       ],
@@ -24,10 +26,10 @@ export const createDonation = async (req, res) => {
         pending: "https://porellosezeiza.vercel.app",
         failure: "https://porellosezeiza.vercel.app",
       },
-      notification_url: "https://porellosezeiza-backend.cyclic.app/webhook",
+      notification_url: "https://pawsofhope.4.us-1.fl0.io/webhook",
       auto_return: "approved",
       statement_descriptor: "Por Ellos Ezeiza",
-      external_reference: "Donacion a porEllosEzeiza",
+      external_reference: "Donacion a PorEllosEzeiza",
     };
     const preference = new Preference(client);
     const result = await preference.create({body});
