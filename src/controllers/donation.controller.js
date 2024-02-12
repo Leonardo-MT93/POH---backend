@@ -10,7 +10,6 @@ export const createDonation = async (req, res) => {
   });
 
   try {
-    console.log(personalToken)
     const body = {
       items: [
         {
