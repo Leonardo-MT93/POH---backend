@@ -1,9 +1,12 @@
 import { MercadoPagoConfig, Payment, Preference } from "mercadopago";
-
+import dotenv from "dotenv";
+dotenv.config();
 export const createDonation = async (req, res) => {
+
+  const personalToken = process.env.ACCESS_TOKEN;
   const client = new MercadoPagoConfig({
     accessToken:
-      "TEST-2269610763553663-012416-74611a1b8dfe808e1713d573b6bdb3ea-1651477105",
+      personalToken,
   });
 
   try {
@@ -17,23 +20,24 @@ export const createDonation = async (req, res) => {
         },
       ],
       back_urls: {
-        success: "http://localhost:5000/success",
-        pending: "http://localhost:5000/pending",
-        failure: "http://localhost:5000/failure",
+        success: "https://porellosezeiza.vercel.app",
+        pending: "https://porellosezeiza.vercel.app",
+        failure: "https://porellosezeiza.vercel.app",
       },
-      notification_url: "https://3260-2800-810-50d-8632-554d-9aec-7e79-ab69.ngrok-free.app/webhook",
+      notification_url: "https://porellosezeiza-backend.cyclic.app/webhook",
       auto_return: "approved",
+      statement_descriptor: "Por Ellos Ezeiza",
+      external_reference: "Donacion a porEllosEzeiza",
     };
     const preference = new Preference(client);
     const result = await preference.create({body});
-    
+
     res.json({
       url:result.init_point
     })
   } catch (error) {
-    console.log('Error en el catch:', error);
     res.status(501).json({
-      message: "Error al crear la preferencia",
+      message: "Error al crear la preferencia en el backend",
     });
   }
 };
