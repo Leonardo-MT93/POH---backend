@@ -11,6 +11,10 @@ app.use(cors(
         origin: 'https://porellosezeiza.vercel.app/'
     }
 ));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://porellosezeiza.vercel.app/');
+    next();
+});
 app.use(donationRoutes)
 
 app.listen(PORT, () => {
