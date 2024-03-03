@@ -22,9 +22,9 @@ export const createDonation = async (req, res) => {
         },
       ],
       back_urls: {
-        success: "https://porellosezeiza.vercel.app",
-        pending: "https://porellosezeiza.vercel.app",
-        failure: "https://porellosezeiza.vercel.app",
+        success: "https://porellosezeiza.vercel.app/success",
+        pending: "https://porellosezeiza.vercel.app/pending",
+        failure: "https://porellosezeiza.vercel.app/failure",
       },
       notification_url: "https://pawsofhope.4.us-1.fl0.io/webhook",
       auto_return: "approved",
